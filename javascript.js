@@ -29,3 +29,7 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
+// Initialize human, and computer score.
+let humanScore = 0, computerScore = 0;
+
+
