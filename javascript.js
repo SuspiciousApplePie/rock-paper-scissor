@@ -29,7 +29,23 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
-// Initialize human, and computer score.
-let humanScore = 0, computerScore = 0;
-
-
+// Playing function
+function playRound(humanChoice, computerChoice) {
+    // IF rock against scissor, rock wins
+    if (humanChoice === 'rock' && computerChoice == 'scissor') {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    // ELSEIF paper against rock, paper wins
+    } else if (humanChoice === 'paper' && computerChoice == 'rock') {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    // ELSEIF scissor against paper, scissor wins
+    } else if (humanChoice === 'scissor' && computerChoice == 'paper') {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    // ELSEIF choice are similar
+    } else if (humanChoice === computerChoice) {
+        console.log('It is a tie!');
+    // ELSE player lose
+    } else {
+        console.log(`You lose ${computerChoice} beats ${humanChoice}`);
+    };
+    console.log(humanChoice, computerChoice)
+}
