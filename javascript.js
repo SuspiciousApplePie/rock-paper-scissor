@@ -44,11 +44,11 @@ function playRound(humanChoice, computerChoice, humanTotalScore, computerTotalSc
         humanTotalScore += 1;
     // ELSEIF paper against rock, paper wins
     } else if (humanChoice === 'paper' && computerChoice == 'rock') {
-        addHumanScore(humanChoice, computerChoice, humanTotalScore);
+        addHumanScore(humanChoice, computerChoice);
         humanTotalScore += 1;
     // ELSEIF scissor against paper, scissor wins
     } else if (humanChoice === 'scissor' && computerChoice == 'paper') {
-        addHumanScore(humanChoice, computerChoice, humanTotalScore);
+        addHumanScore(humanChoice, computerChoice);
         humanTotalScore += 1;
     // ELSEIF choice are similar
     } else if (humanChoice === computerChoice) {
