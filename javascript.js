@@ -16,6 +16,7 @@ function getComputerChoice() {
         // Case 3 is equal to scissor.
         case 3:
             choice = 'scissor';
+            break;
     }
     // return choice.
     return choice;
@@ -29,23 +30,62 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
+// adding for human score.
+function addHumanScore(humanChoice, computerChoice) {
+    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+}
+
 // Playing function
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice, humanTotalScore, computerTotalScore) {
+    console.clear();
     // IF rock against scissor, rock wins
     if (humanChoice === 'rock' && computerChoice == 'scissor') {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        addHumanScore(humanChoice, computerChoice);
+        humanTotalScore += 1;
     // ELSEIF paper against rock, paper wins
     } else if (humanChoice === 'paper' && computerChoice == 'rock') {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        addHumanScore(humanChoice, computerChoice, humanTotalScore);
+        humanTotalScore += 1;
     // ELSEIF scissor against paper, scissor wins
     } else if (humanChoice === 'scissor' && computerChoice == 'paper') {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        addHumanScore(humanChoice, computerChoice, humanTotalScore);
+        humanTotalScore += 1;
     // ELSEIF choice are similar
     } else if (humanChoice === computerChoice) {
         console.log('It is a tie!');
     // ELSE player lose
     } else {
         console.log(`You lose ${computerChoice} beats ${humanChoice}`);
+        computerTotalScore += 1;
     };
-    console.log(humanChoice, computerChoice)
+
+    // If totalScore from either player is equal to 5 returns winner, ELSE run again.
+    if (humanTotalScore === 5) {
+        return 'Winner: Human';
+    } else if (computerTotalScore === 5) {
+        return 'Winner: Computer';
+    } else {
+        // Display current score.
+        console.log(`Score
+                     User: ${humanTotalScore}
+                     Computer: ${computerTotalScore}
+                    `);
+        computerSelect = getComputerChoice();
+        humanSelect = getHumanChoice();
+        return playRound(humanSelect, computerSelect, humanTotalScore, computerTotalScore);
+    }
 }
+
+function playGame() {
+    // Initialize human, and computer score.
+    let humanScore = 0, computerScore = 0;
+    // CALL playround and RETURN winner
+    winner = playRound(humanSelect, computerSelect, humanScore, computerScore);
+    // SHOW the winner
+    console.log(winner);
+}
+// Variable for choice functions
+let computerSelect = getComputerChoice();
+let humanSelect = getHumanChoice();
+// Initialize game
+playGame();
