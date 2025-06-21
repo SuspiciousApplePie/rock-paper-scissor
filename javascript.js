@@ -13,9 +13,9 @@ function getComputerChoice() {
         case 2:
             choice = 'paper';
             break;
-        // Case 3 is equal to scissor.
+        // Case 3 is equal to scissors.
         case 3:
-            choice = 'scissor';
+            choice = 'scissors';
             break;
     }
     // return choice.
@@ -25,7 +25,7 @@ function getComputerChoice() {
 // Human choice function.
 function getHumanChoice() {
     // OBTAIN player choice by prompting.
-    let choice = prompt('Rock? Paper? or Scissor?: ');
+    let choice = prompt('Rock? Paper? or Scissors?: ');
     // return user choice.
     return choice.toLowerCase();
 }
@@ -38,16 +38,16 @@ function addHumanScore(humanChoice, computerChoice) {
 // Playing function
 function playRound(humanChoice, computerChoice, humanTotalScore, computerTotalScore) {
     console.clear();
-    // IF rock against scissor, rock wins
-    if (humanChoice === 'rock' && computerChoice == 'scissor') {
+    // IF rock against scissors, rock wins
+    if (humanChoice === 'rock' && computerChoice == 'scissors') {
         addHumanScore(humanChoice, computerChoice);
         humanTotalScore += 1;
     // ELSEIF paper against rock, paper wins
     } else if (humanChoice === 'paper' && computerChoice == 'rock') {
         addHumanScore(humanChoice, computerChoice);
         humanTotalScore += 1;
-    // ELSEIF scissor against paper, scissor wins
-    } else if (humanChoice === 'scissor' && computerChoice == 'paper') {
+    // ELSEIF scissors against paper, scissors wins
+    } else if (humanChoice === 'scissors' && computerChoice == 'paper') {
         addHumanScore(humanChoice, computerChoice);
         humanTotalScore += 1;
     // ELSEIF choice are similar
