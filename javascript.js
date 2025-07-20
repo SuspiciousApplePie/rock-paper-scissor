@@ -95,15 +95,18 @@ function playRound(humanChoice, computerChoice, humanTotalScore, computerTotalSc
 }
 
 function playGame() {
-    // Initialize human, and computer score.
-    let humanScore = 0, computerScore = 0;
-    // CALL playround and RETURN winner
-    winner = playRound(humanSelect, computerSelect, humanScore, computerScore);
-    // SHOW the winner
-    console.log(winner);
+    const btns = document.querySelectorAll('button');
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+            playRound(e.target.textContent.toLowerCase(), getComputerChoice());
+        })
+    });
 }
-// Variable for choice functions
-let computerSelect = getComputerChoice();
-let humanSelect = getHumanChoice();
-// Initialize game
+let humanTotalScore = 0;
+let computerTotalScore = 0;
+const score = document.createElement('div');
+const content = document.createElement('div');
+const winner = document.createElement('div')
+const body = document.querySelector('body');
+let gameOver = false;
 playGame();
