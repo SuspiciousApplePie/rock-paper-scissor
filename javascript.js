@@ -97,6 +97,7 @@ function restartMessage() {
     return resetGame(tryAgain);
 }
 
+// button for restart
 function resetGame(tryAgain) {
     tryAgain.addEventListener('click', () => {
         humanTotalScore = 0;
@@ -107,6 +108,7 @@ function resetGame(tryAgain) {
     })
 }
 
+// play the game if button gets clicked
 function playGame() {
     const btns = document.querySelectorAll('button');
         btns.forEach(btn => {
@@ -115,6 +117,8 @@ function playGame() {
         })
     });
 }
+
+// Variables
 let humanTotalScore = 0;
 let computerTotalScore = 0;
 const score = document.createElement('div');
@@ -122,4 +126,5 @@ const content = document.createElement('div');
 const winner = document.createElement('div')
 const body = document.querySelector('body');
 let gameOver = false;
+
 playGame();
