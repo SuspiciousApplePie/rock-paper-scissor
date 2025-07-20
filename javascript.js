@@ -22,19 +22,15 @@ function getComputerChoice() {
     return choice;
 }
 
-// adding for human score.
-function addHumanScore(humanChoice, computerChoice, humanScore) {
+// handles human wins
+function handleHumanWin(humanChoice, computerChoice, humanScore) {
     content.textContent = `Computer: ${computerChoice} < Human: ${humanChoice}`;
     body.appendChild(content);
     return humanScore + 1;
 }
 
-function declareTie () {
-    content.textContent = 'Tie';
-    body.appendChild(content);
-}
-
-function addComputerScore (computerChoice, humanChoice, computerScore) {
+// handles computer wins
+function handleComputerWin (computerChoice, humanChoice, computerScore) {
     content.textContent = `Computer: ${computerChoice} > Human: ${humanChoice}`;
     body.appendChild(content);
     return computerScore + 1;
