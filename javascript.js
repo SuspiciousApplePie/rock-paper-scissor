@@ -76,19 +76,35 @@ function playRound(humanChoice, computerChoice) {
     displayScore(humanTotalScore, computerTotalScore);
 
     if (humanTotalScore === 5) {
-        return 'Winner: Human';
-    } else if (computerTotalScore === 5) {
-        return 'Winner: Computer';
-    } else {
-        // Display current score.
-        console.log(`Score
-                     User: ${humanTotalScore}
-                     Computer: ${computerTotalScore}
-                    `);
-        computerSelect = getComputerChoice();
-        humanSelect = getHumanChoice();
-        return playRound(humanSelect, computerSelect, humanTotalScore, computerTotalScore);
+        gameOver = true;
+        winner.textContent = 'Human Wins!'
+        body.appendChild(winner);
+        return restartMessage();
+    } else if (computerTotalScore === 5){
+        gameOver = true;
+        winner.textContent = 'Computer Wins!'
+        body.appendChild(winner);
+        return restartMessage();
     }
+}
+
+function restartMessage() {
+    content.textContent = '';
+    const tryAgain = document.createElement('button');
+    tryAgain.textContent = 'Try again?';
+    body.appendChild(content);
+    winner.appendChild(tryAgain);
+    return resetGame(tryAgain);
+}
+
+function resetGame(tryAgain) {
+    tryAgain.addEventListener('click', () => {
+        humanTotalScore = 0;
+        computerTotalScore = 0;
+        gameOver = false;
+        tryAgain.parentNode.innerHTML = '';
+        displayScore(humanTotalScore, computerTotalScore);
+    })
 }
 
 function playGame() {
