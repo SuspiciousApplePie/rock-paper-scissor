@@ -63,6 +63,31 @@ function checkWinner(humanTotalScore, computerTotalScore) {
     }
 }
 
+// Playing function
+function playRound(humanChoice, computerChoice) {
+    if (gameOver) return;
+
+    // IF rock against scissors, rock wins
+    if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        humanTotalScore = handleHumanWin(humanChoice, computerChoice, humanTotalScore);
+    // ELSEIF paper against rock, paper wins
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+        humanTotalScore = handleHumanWin(humanChoice, computerChoice, humanTotalScore);
+    // ELSEIF scissors against paper, scissors wins
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+        humanTotalScore = handleHumanWin(humanChoice, computerChoice, humanTotalScore);
+    // ELSEIF choice are similar
+    } else if (humanChoice === computerChoice) {
+        declareTie();
+    // ELSE player lose
+    } else {
+        computerTotalScore = handleComputerWin(computerChoice, humanChoice, computerTotalScore); 
+    }
+    displayScore(humanTotalScore, computerTotalScore);
+    checkWinner(humanTotalScore, computerTotalScore);
+}
+
+// restart game message
 function restartMessage() {
     content.textContent = '';
     const tryAgain = document.createElement('button');
