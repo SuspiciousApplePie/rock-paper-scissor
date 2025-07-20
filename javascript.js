@@ -54,30 +54,27 @@ function displayScore (humanTotalScore, computerTotalScore) {
 }
 
 // Playing function
-function playRound(humanChoice, computerChoice, humanTotalScore, computerTotalScore) {
-    console.clear();
+function playRound(humanChoice, computerChoice) {
+    if (gameOver) return;
+
     // IF rock against scissors, rock wins
-    if (humanChoice === 'rock' && computerChoice == 'scissors') {
-        addHumanScore(humanChoice, computerChoice);
-        humanTotalScore += 1;
+    if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        humanTotalScore = addHumanScore(humanChoice, computerChoice, humanTotalScore);
     // ELSEIF paper against rock, paper wins
-    } else if (humanChoice === 'paper' && computerChoice == 'rock') {
-        addHumanScore(humanChoice, computerChoice);
-        humanTotalScore += 1;
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+        humanTotalScore = addHumanScore(humanChoice, computerChoice, humanTotalScore);
     // ELSEIF scissors against paper, scissors wins
-    } else if (humanChoice === 'scissors' && computerChoice == 'paper') {
-        addHumanScore(humanChoice, computerChoice);
-        humanTotalScore += 1;
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+        humanTotalScore = addHumanScore(humanChoice, computerChoice, humanTotalScore);
     // ELSEIF choice are similar
     } else if (humanChoice === computerChoice) {
-        console.log('It is a tie!');
+        declareTie();
     // ELSE player lose
     } else {
-        console.log(`You lose ${computerChoice} beats ${humanChoice}`);
-        computerTotalScore += 1;
-    };
+        computerTotalScore = addComputerScore(computerChoice, humanChoice, computerTotalScore); 
+    }
+    displayScore(humanTotalScore, computerTotalScore);
 
-    // If totalScore from either player is equal to 5 returns winner, ELSE run again.
     if (humanTotalScore === 5) {
         return 'Winner: Human';
     } else if (computerTotalScore === 5) {
