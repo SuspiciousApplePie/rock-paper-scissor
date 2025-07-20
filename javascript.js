@@ -31,8 +31,26 @@ function getHumanChoice() {
 }
 
 // adding for human score.
-function addHumanScore(humanChoice, computerChoice) {
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+function addHumanScore(humanChoice, computerChoice, humanScore) {
+    content.textContent = `Computer: ${computerChoice} < Human: ${humanChoice}`;
+    body.appendChild(content);
+    return humanScore + 1;
+}
+
+function declareTie () {
+    content.textContent = 'Tie';
+    body.appendChild(content);
+}
+
+function addComputerScore (computerChoice, humanChoice, computerScore) {
+    content.textContent = `Computer: ${computerChoice} > Human: ${humanChoice}`;
+    body.appendChild(content);
+    return computerScore + 1;
+}
+
+function displayScore (humanTotalScore, computerTotalScore) {
+    score.textContent = `Computer: ${computerTotalScore} Human: ${humanTotalScore}`;
+    body.appendChild(score);
 }
 
 // Playing function
