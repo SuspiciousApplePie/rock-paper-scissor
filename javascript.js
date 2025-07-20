@@ -22,14 +22,6 @@ function getComputerChoice() {
     return choice;
 }
 
-// Human choice function.
-function getHumanChoice() {
-    // OBTAIN player choice by prompting.
-    let choice = prompt('Rock? Paper? or Scissors?: ');
-    // return user choice.
-    return choice.toLowerCase();
-}
-
 // adding for human score.
 function addHumanScore(humanChoice, computerChoice, humanScore) {
     content.textContent = `Computer: ${computerChoice} < Human: ${humanChoice}`;
